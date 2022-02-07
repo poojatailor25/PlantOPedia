@@ -1,0 +1,25 @@
+<div class="container m-auto d-flex justify-content-center">
+<div class="card mb-3 h-100" style="height: 500px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]='product.imageUrl' class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title">{{product.productName | titlecase}}</h3>
+          <h5 class="card-text price"><b>Price : </b>{{product.price | currency :'INR'}}</h5>
+          <hr class="style1">
+
+          <p><b>Description</b></p>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text"><b>ProductType : </b>{{product.productType.productSubType}}</p>
+          <p class="card-text"><b>Category : </b>{{product.productType.category.categoryType}}</p>
+          <a href="#" class="btn btn-secondary" [routerLink]="['/product']">Back</a>
+          <a href="#" class="btn btn-danger" *ngIf="roleFlag" (click)="deleteProduct(product.productId)">Delete</a>
+          <a href="#" class="btn btn-success" *ngIf="roleFlag" [routerLink]="['/products/',product.productId]">Update</a>
+          <a href="#" class="btn btn-primary" *ngIf="!roleFlag" (click)=" isUserLoggedIn()" [routerLink]="['/addorder/',product.productId]">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

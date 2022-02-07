@@ -1,0 +1,35 @@
+<body>
+  <div class="card">
+    <div class="card-header">
+      Order List
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>OrderDate</th>
+              <th>Address</th>
+              <th>UserName</th>
+              <th>ProductName</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let ord of orders'>
+              <td>{{ord.orderDate | date: 'dd/mm/yyyy'}}</td>
+              <td>{{ord.address}}</td>
+              <td>{{ord.users.name}}</td>
+              <td>{{ord.product.productName}}</td>
+              <td>{{ord.product.price}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteorder(ord.orderId)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

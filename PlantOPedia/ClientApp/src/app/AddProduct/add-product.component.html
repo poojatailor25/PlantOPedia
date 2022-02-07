@@ -1,0 +1,42 @@
+<form [formGroup]="productform">
+    <div class="form-group row">
+        <div class="form-group row p-3">
+            <label for="ProductName" class="col-sm-2 col-form-label">ProductName:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="productName" >
+            </div>
+        </div>
+        <div class="form-group row p-3">
+            <label for="Description" class="col-sm-2 col-form-label">Description:</label>
+            <div class="col-sm-10">
+                <input type="text"  class="form-control" formControlName="description">
+            </div>
+        </div>
+        <div class="form-group row p-3">
+            <label for="Price" class="col-sm-2 col-form-label">Price:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="price" >
+            </div>            
+        </div>
+        
+        <div class="form-group row p-3">
+            <label for="imageUrl" class="col-sm-2 col-form-label">imageUrl:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" Address="Address" formControlName="imageUrl">
+            </div>
+        </div>
+        <div class="form-group row p-3">
+            <label for="productType" class="col-sm-2 col-form-label">ProductType:</label>
+            <div class="col-sm-10">
+                <select class="form-control" formControlName="productTypeId">
+                    <option value="Default"></option>
+                <option *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group text-center pt-5">
+           <button class="btn btn-primary" (click)="onSubmit()">ADD</button>
+        </div>
+    </div> 
+
+</form>

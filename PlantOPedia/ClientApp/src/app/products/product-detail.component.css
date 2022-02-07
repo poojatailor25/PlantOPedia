@@ -1,0 +1,15 @@
+img{
+    height:100%;
+    width: 600px;
+    object-fit: fill;
+}
+a.btn{
+    margin: 10px 15px;
+}
+
+hr.style1{
+	border-top: 0.12em solid gray;
+}
+.price{
+    color: lime;
+}

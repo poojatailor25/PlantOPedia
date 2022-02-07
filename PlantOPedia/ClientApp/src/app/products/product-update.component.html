@@ -1,0 +1,58 @@
+<p>product-update works!</p>
+<form [formGroup]="productform" >
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Product Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="productName"  >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="description" >
+      </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="price" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 m-auto col-form-label">Image</label>
+        <div class="col-sm-10">
+            <img [src]='product.imageUrl' [title]='product.productName'
+                    [style.width.px]='imageWidth'
+                    [style.margin.px]='imageMargin' [style.object-fit]='imagefit' class="rounded float-left m-0" alt="...">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Image Url</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="imageUrl" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Product Type</label>
+        <div class="col-sm-10">
+          <select class="form-control" formControlName="productTypeId">
+              <option value="Default"></option>
+          <option *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
+          <!-- <option value = "FlowerSeeds"> Flower Seeds </option>
+          <option value = "HerbSeed"> Herb Seeds </option>
+          <option value = "FruitSeeds"> Fruit Sedds</option>
+          <option value = "Artificial"> Artificial </option>
+          <option value = "Natural"> Natural</option>
+          <option value = "DecorType"> Decor Type </option>
+          <option value = "ForWellness"> For Wellness </option>
+          <option value = "Office"> For Office </option>
+          <option value = "ForBalcony"> For Balcony </option>
+          <option value = "ForIndors"> For Indoors </option>
+           -->
+          </select>
+      </div>
+    </div>
+    <div class="row mb-3 d-flex">
+        <button type="submit" (click)="updateProduct()" class="btn btn-primary">Update</button>
+    </div>
+  </form>

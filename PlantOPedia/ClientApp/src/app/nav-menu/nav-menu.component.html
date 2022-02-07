@@ -1,0 +1,59 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow "
+  >
+    <div class="container text-white ">
+      <a class="navbar-brand" [routerLink]="['/']"><img style="height: 60px; width: 140px;" src="assets/image/logo1.png" alt=""></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link " [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link " *ngIf="roleFlag" [routerLink]="['/order']"
+              >Order</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link " [routerLink]="['/product']"
+              >Product</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link " *ngIf="roleFlag" [routerLink]="['/addproduct']"
+              >Add Product</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
+            <a class="nav-link " (click)="removeLoggedInUserDetails()" [routerLink]="['']"
+              >Logout</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="!loggedIn" [routerLinkActive]="['link-active']">
+            <a class="nav-link"  [routerLink]="['/login']"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
