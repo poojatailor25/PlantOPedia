@@ -28,7 +28,7 @@
         <div class="form-group row p-3">
             <label for="productType" class="col-sm-2 col-form-label">ProductType:</label>
             <div class="col-sm-10">
-                <select class="form-control" formControlName="productTypeId">
+                <select style="background-color: white;" class="form-control" formControlName="productTypeId">
                     <option value="Default"></option>
                 <option *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
                 </select>

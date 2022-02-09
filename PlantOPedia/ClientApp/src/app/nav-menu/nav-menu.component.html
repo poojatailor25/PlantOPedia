@@ -37,20 +37,34 @@
               >Product</a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link " *ngIf="roleFlag" [routerLink]="['/addproduct']"
-              >Add Product</a
+
+          <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
+            <a class="nav-link " *ngIf="!roleFlag" [routerLink]="['/cart']"
+              ><i class="fa fa-shopping-cart"></i> Cart</a
             >
           </li>
-          <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
+          <!-- <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
             <a class="nav-link " (click)="removeLoggedInUserDetails()" [routerLink]="['']"
               >Logout</a
             >
-          </li>
+          </li> -->
           <li class="nav-item" *ngIf="!loggedIn" [routerLinkActive]="['link-active']">
             <a class="nav-link"  [routerLink]="['/login']"
               >Login</a
             >
+          </li>
+          <li class="nav-item dropdown" *ngIf="loggedIn">
+            <a class="nav-link dropdown-toggle btn-lg dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <!-- <li><a class="dropdown-item" href="#">Signed In as a</a></li> -->
+              <li><a class="dropdown-item disabled text-primary" >Signed In as a<br><b>{{uName}}</b></a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item"   [routerLink]="['/profile']">Your profile</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" (click)="removeLoggedInUserDetails()" [routerLink]="['']">Logout</a></li>
+            </ul>
           </li>
         </ul>
       </div>

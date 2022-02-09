@@ -18,7 +18,7 @@
           </thead>
           <tbody>
             <tr *ngFor='let ord of orders'>
-              <td>{{ord.orderDate | date: 'dd/mm/yyyy'}}</td>
+              <td>{{ord.orderDate | date: 'dd/MM/YYYY'}}</td>
               <td>{{ord.address}}</td>
               <td>{{ord.users.name}}</td>
               <td>{{ord.product.productName}}</td>

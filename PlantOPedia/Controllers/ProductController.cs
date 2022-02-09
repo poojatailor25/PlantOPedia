@@ -29,7 +29,7 @@ namespace PlantOPedia.Controllers
         public IActionResult Get(Guid id)
         {
             return Ok(_context.Products.Include(p => p.ProductType).
-                                    ThenInclude(c => c.Category).FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false)); ;
+                                    ThenInclude(c => c.Category).FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false)); 
                 
         }
 

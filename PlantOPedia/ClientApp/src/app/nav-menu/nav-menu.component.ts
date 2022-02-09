@@ -12,12 +12,14 @@ export class NavMenuComponent implements OnInit {
   loggedIn : any;
   roleType!:string |null;
   roleFlag!: boolean;
+  uName: any;
 
   constructor (private loginService : LoginService,
                 private router : Router){}
 
   ngOnInit(): void {
     this.loggedIn = this.loginService.isUserLoggedIn();
+    this.uName = this.loginService.getLoggedInUserName(); 
     this.roleType = this.loginService.getLoggedInUserType(); 
     if(this.roleType == 'Admin'){
         this.roleFlag = true;

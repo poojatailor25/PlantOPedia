@@ -18,6 +18,7 @@
           <a href="#" class="btn btn-danger" *ngIf="roleFlag" (click)="deleteProduct(product.productId)">Delete</a>
           <a href="#" class="btn btn-success" *ngIf="roleFlag" [routerLink]="['/products/',product.productId]">Update</a>
           <a href="#" class="btn btn-primary" *ngIf="!roleFlag" (click)=" isUserLoggedIn()" [routerLink]="['/addorder/',product.productId]">Buy Now</a>
+          <button  class="btn btn-warning" *ngIf="!roleFlag"  (click)="addIncart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
         </div>
       </div>
     </div>

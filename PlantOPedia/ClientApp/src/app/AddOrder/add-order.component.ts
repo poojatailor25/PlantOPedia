@@ -7,8 +7,9 @@ import { Orderservice_api } from "../orders/order.service";
 import { IProduct } from "../products/product";
 import { ProductService } from "../products/product.service";
 import { SuccessEnum } from "../Shared/models";
-import { DatePipe, formatDate } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Observable } from "rxjs";
+import { IOrder } from "../orders/order";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class AddOrderComponent implements OnInit {
   product!: IProduct; 
   uId: any;
   uName: any;
+  array: IOrder[] = [];
   
 
   
@@ -32,7 +34,8 @@ export class AddOrderComponent implements OnInit {
               private route: ActivatedRoute,
               private OrderService_api:Orderservice_api,
               private productService: ProductService,
-              private loginService: LoginService){}
+              private loginService: LoginService,
+              private currency: CurrencyPipe){}
 
   orderform:FormGroup=new FormGroup({});
    myFormattedDate = this.pipe.transform(this.dateVal, 'short');
@@ -53,7 +56,7 @@ export class AddOrderComponent implements OnInit {
      userId: [this.uId],
      name: [this.uName],
      productId:[undefined],
-     orderDate:[new Date()],
+     orderDate: [new Date()],
     //  orderDate: [formatDate(this.dateVal, 'yyyy-MM-dd ', 'en')],
     //  ordatedate: [this.myFormattedDate],
     // orderDate: [moment().format('YYYY-MM-DD h:mm a')],
@@ -71,10 +74,10 @@ export class AddOrderComponent implements OnInit {
       next: (product) => {
         this.product = product;
         console.log("Product detail method - ", product);
-        this.orderform.patchValue({
+          this.orderform.patchValue({
           productId: this.product.productId,
           productName: this.product.productName,
-          price: this.product.price
+          price: this.product.price,
         })
       }
     })
@@ -82,9 +85,11 @@ export class AddOrderComponent implements OnInit {
 
   onSubmit():void {
       console.log(this.orderform.value);
+      this.array.push(this.orderform.value);
+      console.log(this.array);
       // this.orderform.controls.orderDate.setValue(new Date().toLocaleString());
-      this.OrderService_api.addOrder(this.orderform.value).subscribe(
-          (orderresponse) => {
+      this.OrderService_api.addOrder(this.array).subscribe(
+          (orderresponse) => { 
               this.orderresponse = orderresponse;
               if (this.orderresponse.message === SuccessEnum.message ) {
                   alert("Order Placed Successfully");

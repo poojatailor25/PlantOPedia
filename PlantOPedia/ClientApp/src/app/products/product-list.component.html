@@ -1,10 +1,19 @@
 <div class='card'>
-  <h2>Product</h2> 
+  <div class="head-product d-flex align-items-center justify-content-between">
+    <h2>Product</h2> 
+    <div class="input-box input-group rounded">
+      <input type="search" class="form-control" [(ngModel)]='listFilter' placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fa fa-search"></i>
+      </span>
+    </div>
+    <div class="add-product" *ngIf="roleFlag" [routerLink]="['/addproduct']"> <i class="fa fa-plus"></i> Add Product</div>
+  </div>
   <!-- <div class='card-header'>
   </div> -->
 
     <div class="row row-cols-1 row-cols-md-5 g-4">
-    <div class="col" *ngFor='let product of products'>
+    <div class="col" *ngFor='let product of filteredProducts'>
       <div class="card h-100 p-2">
         <img [src]='product.imageUrl' [title]='product.productName'
              [style.width.px]='imageWidth'

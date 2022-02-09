@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlantOPedia.Data;
 
@@ -11,9 +12,10 @@ using PlantOPedia.Data;
 namespace PlantOPedia.Migrations
 {
     [DbContext(typeof(PlantdbContext))]
-    partial class PlantdbContextModelSnapshot : ModelSnapshot
+    [Migration("20220208103738_Fourthmigration")]
+    partial class Fourthmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

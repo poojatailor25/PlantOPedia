@@ -1,0 +1,55 @@
+<section>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="background: #efefef; border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <form [formGroup]="newuserform">
+                <h3 class="mb-5">Signup</h3>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="typeNameX-2" formControlName="name" placeholder="Enter your Name" class="form-control form-control-lg" />
+                    <!-- <label class="form-label" for="typeNameX-2">Name</label> -->
+                  </div>
+  
+                <div class="form-outline mb-4">
+                  <input type="email" id="typeEmailX-2" formControlName="email" placeholder="Enter Email Id" class="form-control form-control-lg" />
+                  <!-- <label class="form-label" for="typeEmailX-2">Email</label> -->
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="typeAddressX-2" formControlName="address" placeholder="Enter Address" class="form-control form-control-lg" />
+                    <!-- <label class="form-label" for="typeAddressX-2">Address</label> -->
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="typeMobileX-2" formControlName="mobileNo" placeholder="Enter Mobile Number" class="form-control form-control-lg" />
+                    <!-- <label class="form-label" for="typeMobileX-2">Mobile No.</label> -->
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <input type="password" id="typePasswordX-2" formControlName="password" placeholder="Enter Password" class="form-control form-control-lg" />
+                  <!-- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                </div>
+  
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-start mb-4">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         value=""
+                         id="form1Example3" />
+                  <label class="form-check-label" for="form1Example3"> Remember password </label>
+                </div>
+  
+                <button class="btn btn-primary btn-lg btn-block mb-3" (click)="addNewUser()" type="submit">SignUp</button>
+  
+              </form>
+              <p>Already Have an Account? <span class="text-primary" [routerLink]="['/login']">Click Here</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -11,6 +11,8 @@ import { IUser } from "./login";
 export class LoginService {
 
   private loginUrl: string = "https://localhost:7258/api/login";
+  private userUrl: string = "https://localhost:7258/api/user";
+
 
   constructor(private http: HttpClient) { }
 
@@ -43,8 +45,18 @@ export class LoginService {
     else{
       return false;
     }
+
   }
 
+
+  updateUserProfile(uid: any, user: IUser): Observable<IUser> {
+      return this.http.put<IUser>(this.userUrl+"/"+uid, user);
+  }
+
+
+  addUser(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(this.userUrl, user);
+  }
 
 
 }

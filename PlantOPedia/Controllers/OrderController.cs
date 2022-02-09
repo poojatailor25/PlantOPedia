@@ -35,16 +35,19 @@ namespace PlantOPedia.Controllers
         public IActionResult Get(Guid id)
         {
       
-            return Ok(_context.Orders.FirstOrDefault(order => order.OrderId == id && order.IsDeleted == false));
+            return Ok(_context.Orders.Include(product => product.Product).Where(user => user.UserId == id ).ToList());
 
         }
 
         // POST api/<OrderController>
         [HttpPost]
-        public IActionResult Post([FromBody] Order order)
+        public IActionResult Post([FromBody] List<Order> orders)
         {
-            order.OrderDate = order.OrderDate.ToLocalTime();
-            _context.Orders.Add(order);
+            foreach (var order in orders)
+            {
+                order.OrderDate = order.OrderDate.ToLocalTime();
+            }
+            _context.Orders.AddRange(orders);
             _context.SaveChanges();
             SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
             return Ok(successResponse);
@@ -62,6 +65,13 @@ namespace PlantOPedia.Controllers
         {
             var exists = _context.Orders.Find(id);
             {
+                //hard delete
+                /*_context.Orders.Remove(new Order() { OrderId = id});
+                _context.SaveChanges();
+
+                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+                return Ok(successResponse);*/
+                
                 if (exists != null)
                 {
                     exists.IsDeleted = true;
@@ -70,9 +80,11 @@ namespace PlantOPedia.Controllers
                 }
                 else
                 {
-                    return NotFound("Order Not Found");
+                    ErrorResponse errorResponse = new ErrorResponse() { Code = "404", Message = "Not Found" };
+                    return NotFound(errorResponse);
                 }
-                return Ok("Success");
+                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+                return Ok(successResponse);
             }
         }
     }

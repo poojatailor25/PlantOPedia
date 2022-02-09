@@ -35,9 +35,9 @@
     <div class="row mb-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Product Type</label>
         <div class="col-sm-10">
-          <select class="form-control" formControlName="productTypeId">
+          <select style="background-color: white;"  class="form-control" formControlName="productTypeId">
               <option value="Default"></option>
-          <option *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
+          <option  *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
           <!-- <option value = "FlowerSeeds"> Flower Seeds </option>
           <option value = "HerbSeed"> Herb Seeds </option>
           <option value = "FruitSeeds"> Fruit Sedds</option>

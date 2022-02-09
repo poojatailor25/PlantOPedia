@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         
       },
       (errorResponce) => {
-        alert(errorResponce + "Invalid Email or Password");
+        alert("Invalid Email or Password");
       }
     )
   }

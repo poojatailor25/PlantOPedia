@@ -10,7 +10,7 @@ import { Orderservice_api } from "./order.service";
 export class Orderlistcomponent implements OnInit {
 
   pageTitle: string = 'Oredr List';
-  orders: IOrder[] = [];
+  orders: any;
   deleteResponse: any;
 
   constructor(private route: Router, private Orderservice_api: Orderservice_api) {
@@ -39,7 +39,8 @@ export class Orderlistcomponent implements OnInit {
     this.Orderservice_api.deleteOrder(id).subscribe({
       next: deleteResponse => {
         this.deleteResponse = deleteResponse;
-        console.log("Delete Success",this.deleteResponse)
+        // console.log("Delete Success",this.deleteResponse)
+        window.location.reload();
 
       }
 

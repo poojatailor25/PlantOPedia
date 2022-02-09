@@ -14,9 +14,12 @@ export class Orderservice_api {
   getOrders(): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(this.orderUrl)
   }
+  getOrdersByUserId(uid: any): Observable<IOrder[]> {
+    return this.http.get<IOrder[]>(this.orderUrl+"/"+uid);
+  }
 
-  addOrder(order: any): Observable<IOrder>{
-    return this.http.post<IOrder>(this.orderUrl, order);
+  addOrder(order: any): Observable<IOrder[]>{
+    return this.http.post<IOrder[]>(this.orderUrl, order);
   }
 
   deleteOrder(OrderId: any): Observable<any> {

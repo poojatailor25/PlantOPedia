@@ -1,0 +1,168 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="profile-nav col-md-3">
+            <div class="panel shadow bordercustom">
+                <div class="user-heading round">
+                    <a href="#">
+                        <img src="https://th.bing.com/th/id/OIP.Z1oVUYv6EHwukCr45ELCxwHaHa?pid=ImgDet&w=221&h=221&c=7&dpr=1.25"
+                            alt="">
+                    </a>
+                    <h1>{{userdetail.name}}</h1>
+                    <p>{{userdetail.email}}</p>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <p (click)="childToggle('profile')"> <i class="fa fa-user"></i> Profile</p>
+                    </li>
+                    <li>
+                        <p (click)="childToggle('order')"> <i class="fa fa-calendar"></i> My Orders</p>
+                    </li>
+                    <li>
+                        <p (click)="childToggle('edit')"> <i class="fa fa-edit"></i> Edit profile</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="profile-info col-md-9">
+
+            <div class="panel" *ngIf="childcomponent == 'profile'">
+                <div class="panel-body bio-graph-info">
+                    <h1>Personal Information</h1>
+                    <div class="row">
+                        <div class="bio-row">
+                            <p><span>Name </span>: {{userdetail.name}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Email </span>: {{userdetail.email}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Address </span>: {{userdetail.address}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Mobile No.</span>: {{userdetail.mobileNo}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Countary</span>: India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" *ngIf="childcomponent == 'order'">
+                <h1 style="color: darkslategrey;">My Orders</h1>
+                <h5 style="color: darkslategrey;">Canceled Orders</h5>
+                <div class="row row-cols-1 row-cols-md-12 g-4">
+                    <div class="row row-cols-1 row-cols-md-12 g-4">
+                        <div class="col text-muted" *ngFor="let order of orderdetail" style="opacity: 1;">
+                            <div class="card mb-3" *ngIf="order.isDeleted ">
+                                <div class="row g-0">
+                                    <div class="col-md-3">
+                                        <img src="{{order.product.imageUrl}}" class="img-fluid rounded-start h-100"
+                                            alt="..." style="filter: grayscale(100%);">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{order.product.productName}}</h5>
+                                            <p class="card-text">Order Date: {{order.orderDate | date}}</p>
+                                            <p class="card-text">Address: {{order.address}}</p>
+                                            <p class="card-text">Price: {{order.product.price | currency : "INR"}} </p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-2 d-flex justify-content-end">
+                                        <button class="btn btn-secondary" >Canceled Order</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 style="color: darkslategrey;">Orders</h5>
+                <div class="row row-cols-1 row-cols-md-12 g-4">
+                    <div class="col" *ngFor="let order of orderdetail">
+                        <div class="card mb-3" *ngIf="!order.isDeleted ">
+                            <div class="row g-0">
+                                <div class="col-md-3">
+                                    <img src="{{order.product.imageUrl}}" class="img-fluid rounded-start h-100"
+                                        alt="...">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{order.product.productName}}</h5>
+                                        <p class="card-text">Order Date: {{order.orderDate | date}}</p>
+                                        <p class="card-text">Address: {{order.address}}</p>
+                                        <p class="card-text">Price: {{order.product.price | currency : "INR"}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-end">
+                                    <button class="btn btn-danger" (click)="deleteorder(order.orderId)">Cancel
+                                        Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" *ngIf="childcomponent == 'edit'">
+
+                <div class="panel-body bio-graph-info">
+                    <h1>Personal Information</h1>
+                    <form [formGroup]="userform">
+                        <div class="row">
+                            <div class="bio-row">
+                                <p><span>Name </span>: <input type="text" formControlName="name"></p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Email </span>: <input type="email" formControlName="email"></p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Address </span>: <input type="text" formControlName="address"></p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Mobile No.</span>: <input type="text" formControlName="mobileNo"></p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Countary</span>: India</p>
+                            </div>
+                        </div>
+                        <div class="row mb-3 d-flex">
+                            <button type="submit" (click)="updateProfile()" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <form >
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"> Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="address">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Mobile No.</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="imageUrl">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3 d-flex">
+                        <button type="submit"  class="btn btn-primary">Update</button>
+                    </div>
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>

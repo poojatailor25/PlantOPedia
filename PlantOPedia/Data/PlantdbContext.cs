@@ -21,6 +21,7 @@ namespace PlantOPedia.Data
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
 
     }

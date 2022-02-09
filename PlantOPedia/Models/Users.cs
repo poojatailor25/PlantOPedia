@@ -20,7 +20,7 @@ namespace PlantOPedia.Models
         public string MobileNo { get; set; }
         [ForeignKey("Role")]
         public Guid RoleId { get; set; }
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
         public bool IsDeleted { get; set; }
     }
 }
