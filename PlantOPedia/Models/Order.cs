@@ -12,6 +12,8 @@ namespace PlantOPedia.Models
         public DateTime OrderDate { get; set; }
         [Required, MaxLength(100)]
         public string Address { get; set; }
+        [Required]
+        public OrderStatus OrderStatus { get; set; }
         [ForeignKey("Users")]
         public Guid UserId { get; set; }
         public Users? Users { get; set; }

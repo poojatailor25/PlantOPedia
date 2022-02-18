@@ -7,6 +7,9 @@ import { IOrder } from "./order";
   providedIn: 'root'
 })
 export class Orderservice_api {
+  updateorder(orderId: any, value: any) {
+    throw new Error("Method not implemented.");
+  }
 
   private orderUrl = "https://localhost:7258/api/order";
   constructor(private http: HttpClient) { }
@@ -25,6 +28,8 @@ export class Orderservice_api {
   deleteOrder(OrderId: any): Observable<any> {
     return this.http.delete(this.orderUrl + "/" + OrderId);
 }
+
+
 
 
 }

@@ -55,8 +55,9 @@ namespace PlantOPedia.Controllers
 
         // PUT api/<OrderController>/5            
         [HttpPut("{id}")]
-        public void Put([FromBody] int id)
+        public void Put(Guid id, [FromBody]Order order)
         {
+           
         }
 
         // DELETE api/<OrderController>/5

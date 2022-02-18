@@ -1,19 +1,22 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { SuccessEnum } from "../Shared/models";
 import { IOrder } from "./order";
 import { Orderservice_api } from "./order.service";
 
 @Component({
   selector: 'app-orders',
-  templateUrl:'./order-list.component.html'
+  templateUrl: './order-list.component.html'
 })
 export class Orderlistcomponent implements OnInit {
 
   pageTitle: string = 'Oredr List';
   orders: any;
   deleteResponse: any;
+ 
 
-  constructor(private route: Router, private Orderservice_api: Orderservice_api) {
+  constructor(private route: Router, private Orderservice_api: Orderservice_api,
+    private router:Router) {
 
   }
   ngOnInit(): void {
@@ -28,14 +31,14 @@ export class Orderlistcomponent implements OnInit {
   listorders() {
     this.Orderservice_api.getOrders().subscribe({
       next: orders => {
-        console.log("confirm",orders);
+        console.log("confirm", orders);
         this.orders = orders;
       }
     })
-     
+
   }
 
-  deleteorder(id:any) {
+  deleteorder(id: any) {
     this.Orderservice_api.deleteOrder(id).subscribe({
       next: deleteResponse => {
         this.deleteResponse = deleteResponse;
@@ -46,5 +49,6 @@ export class Orderlistcomponent implements OnInit {
 
     })
   }
+  
 
 }

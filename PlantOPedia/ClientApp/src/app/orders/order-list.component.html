@@ -13,6 +13,7 @@
               <th>UserName</th>
               <th>ProductName</th>
               <th>Price</th>
+              <th>orderStatus</th>
               <th></th>
             </tr>
           </thead>
@@ -23,8 +24,17 @@
               <td>{{ord.users.name}}</td>
               <td>{{ord.product.productName}}</td>
               <td>{{ord.product.price}}</td>
+              <td [ngClass]="(ord.orderStatus=='Neworder')?'text-success':''">
+                <span [ngClass]="(ord.orderStatus=='Outfordelievery')?'text-warning':''">
+                  <span [ngClass]="(ord.orderStatus=='Delievered')?'text-primary':''">
+                    <span [ngClass]="(ord.orderStatus=='cancelled')?'text-danger':''">
+                        {{ord.orderStatus}}
+                    </span>
+                  </span>
+                </span>
+              </td>
               <td>
-                <button type="button" class="btn btn-danger" (click)="deleteorder(ord.orderId)">Delete</button>
+                <button type="button" class="btn btn-danger" (click)="deleteorder(ord.orderId)">Cancel</button>
               </td>
             </tr>
           </tbody>
