@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   cartDelete!: string;
   totalcost: any = 0;
   totalItems: number = 0;
+  paymentorder: boolean = false;
 
 
   constructor( private loginService: LoginService,
@@ -48,6 +49,6 @@ export class CartComponent implements OnInit {
   }
 
   productIds(){
-    this.cartService.OrderArray(this.cartresponse);
+    this.paymentorder = this.cartService.OrderArray(this.cartresponse);
   }
 }

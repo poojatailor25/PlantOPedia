@@ -13,6 +13,7 @@ export class CartService {
   cartOrder: IOrder[] = [];
   orderresponse!: any;
   cartDelete!: string;
+  paymentSuccess: boolean = false;
 
   private cartUrl = 'https://localhost:7258/api/cart';
 
