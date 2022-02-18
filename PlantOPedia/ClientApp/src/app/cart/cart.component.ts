@@ -1,5 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login/login.service';
 import { ICart } from './cart';
 import { CartService } from './cart.service';
@@ -18,8 +19,11 @@ export class CartComponent implements OnInit {
   paymentorder: boolean = false;
 
 
+  paymentform : FormGroup = new FormGroup({});
+
   constructor( private loginService: LoginService,
-              private cartService: CartService ) { }
+              private cartService: CartService,
+              private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
     this.uId =this.loginService.getLoggedInUser();
@@ -30,6 +34,14 @@ export class CartComponent implements OnInit {
       }
     })
 
+    this.paymentform = this.formBuilder.group({
+      name: [undefined, [Validators.required]],
+      cardno: [undefined, [Validators.required]],
+      expirydate: [undefined, [Validators.required]],
+      cvv: [undefined, [Validators.required]]
+    })
+
+    
   }
 
   OnDelete(cartId: string){
@@ -49,6 +61,16 @@ export class CartComponent implements OnInit {
   }
 
   productIds(){
-    this.paymentorder = this.cartService.OrderArray(this.cartresponse);
+    debugger
+    if(this.paymentform.invalid)
+    {
+      alert("Field is Invalid or Empty");
+      console.log(this.paymentform.value);
+
+    }
+    else
+    {
+      this.paymentorder = this.cartService.OrderArray(this.cartresponse);
+    }
   }
 }

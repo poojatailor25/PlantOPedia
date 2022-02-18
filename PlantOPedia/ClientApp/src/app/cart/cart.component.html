@@ -93,10 +93,7 @@
     </div>
   </div>
 
-  <!-- Button trigger modal
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button> -->
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,38 +105,41 @@
         </div>
         <div class="modal-body">
           <div class="container p-0">
-            <div class="paymentsuccess p-3 mb-2" *ngIf="paymentorder" style="color: green; border-radius: 3px; font-size: 20px; background-color: lightgreen;">
-              <i class="fa fa-check-circle"></i><span> Payment Successful</span>            
+            <div class="paymentsuccess p-3 mb-2" *ngIf="paymentorder"
+              style="color: green; border-radius: 3px; font-size: 20px; background-color: lightgreen;">
+              <i class="fa fa-check-circle"></i><span> Payment Successful</span>
             </div>
             <div class="card px-4">
-              <p class="h8 py-3"><img style="height: 50px;" src="https://logosmarcas.net/wp-content/uploads/2020/04/PayPal-Logo.png" alt=""></p>
-              <div class="row gx-3">
-                <div class="col-12">
-                  <div class="d-flex flex-column">
-                    <p class="text mb-1">Person Name</p> <input class="form-control mb-3" type="text" placeholder="Name"
-                      value="">
+              <p class="h8 py-3"></p>
+              <div [formGroup]="paymentform">
+                <div class="row gx-3">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">Person Name</p> <input class="form-control mb-3" formControlName="name" type="text"
+                        placeholder="Name">
+                    </div>
                   </div>
-                </div>
-                <div class="col-12">
-                  <div class="d-flex flex-column">
-                    <p class="text mb-1">Card Number</p> <input class="form-control mb-3" type="text"
-                      placeholder="1234 5678 435678">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">Card Number</p> <input class="form-control mb-3" formControlName="cardno" type="text"
+                        placeholder="1234 5678 435678">
+                    </div>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="d-flex flex-column">
-                    <p class="text mb-1">Expiry</p> <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                  <div class="col-6">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">Expiry</p> <input class="form-control mb-3" formControlName="expirydate" type="text" placeholder="MM/YYYY">
+                    </div>
                   </div>
-                </div>
-                <div class="col-6">
-                  <div class="d-flex flex-column">
-                    <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password"
-                      placeholder="***">
+                  <div class="col-6">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " formControlName="cvv" type="password"
+                        placeholder="***">
+                    </div>
                   </div>
-                </div>
-                <div class="col-12">
-                  <div class="btn btn-primary mb-3" (click)="productIds()"> <span class="ps-3">Pay {{totalcost | currency : 'INR'}}</span> <span
-                      class="fa fa-arrow-right"></span> </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary mb-3" (click)="productIds()"> <span class="ps-3">Pay {{totalcost |
+                        currency : 'INR'}}</span> <span class="fa fa-arrow-right"></span> </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,4 +152,7 @@
       </div>
     </div>
   </div>
+
+
+
 </section>

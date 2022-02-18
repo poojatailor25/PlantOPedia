@@ -62,8 +62,9 @@ export class CartService {
             });
             console.log(cd.cartId);
           })
-            alert("Order Placed Successfully");
-            window.location.reload();
+            alert("Payment Successful");
+            setTimeout(function(){ window.location.reload()},1000);
+            // window.location.reload();
 
         }
       }
