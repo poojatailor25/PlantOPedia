@@ -39,9 +39,13 @@
           </li>
 
           <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
-            <a class="nav-link " *ngIf="!roleFlag" [routerLink]="['/cart']"
-              ><i class="fa fa-shopping-cart"></i> Cart</a
-            >
+            <a *ngIf="!roleFlag" [routerLink]="['/cart']" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+              <i class="fa fa fa-shopping-cart fa-2x"></i>
+              <span class="cart-basket d-flex align-items-center justify-content-center" *ngIf="istotalItems">
+               {{totalItems}}
+              </span>
+            </a>
+            
           </li>
           <!-- <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
             <a class="nav-link " (click)="removeLoggedInUserDetails()" [routerLink]="['']"
@@ -49,7 +53,7 @@
             >
           </li> -->
           <li class="nav-item" *ngIf="!loggedIn" [routerLinkActive]="['link-active']">
-            <a class="nav-link"  [routerLink]="['/login']"
+            <a class="nav-link" [routerLink]="['/login']"
               >Login</a
             >
           </li>

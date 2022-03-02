@@ -22,7 +22,7 @@ nav{
 ul li a{
   color: seagreen;
   cursor: pointer;
-
+  margin-right: 7px;
 }
 ul li a:hover{
   color: springgreen;
@@ -31,4 +31,17 @@ ul li a:hover{
 .container .navbar-brand{
   color: peachpuff;
 
+}
+
+ul li a.cart .cart-basket {
+  font-size: .8rem;
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+  padding:8px;
 }

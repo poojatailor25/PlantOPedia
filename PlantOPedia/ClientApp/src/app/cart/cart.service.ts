@@ -5,6 +5,7 @@ import { IOrder } from '../orders/order';
 import { Orderservice_api } from '../orders/order.service';
 import { SuccessEnum } from '../Shared/models';
 import { ICart } from './cart';
+import Swal from "sweetalert2"
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,7 @@ export class CartService {
       next: orderresponse => {
         this.orderresponse = orderresponse;
         if (this.orderresponse.message == SuccessEnum.message) {
-          cartData.forEach( cd => {
+          cartData.forEach(cd => {
             this.deleteProductCart(cd.cartId).subscribe({
               next: cartDelete => {
                 this.cartDelete = cartDelete;
@@ -62,9 +63,29 @@ export class CartService {
             });
             console.log(cd.cartId);
           })
-            alert("Payment Successful");
-            setTimeout(function(){ window.location.reload()},1000);
-            // window.location.reload();
+          // let timerInterval: any
+          // Swal.fire({
+          //   title: 'Auto close alert!',
+          //   html: 'I will close in <b></b> milliseconds.',
+          //   timer: 2000,
+          //   timerProgressBar: true,
+          //   didOpen: () => {
+          //     Swal.showLoading()
+          //     timerInterval = setInterval(() => {
+          //     }, 100)
+          //   },
+          //   willClose: () => {
+          //     clearInterval(timerInterval)
+          //   }
+          // }).then((result) => {
+          //   /* Read more about handling dismissals below */
+          //   if (result.dismiss === Swal.DismissReason.timer) {
+          //     console.log('I was closed by the timer')
+          //   }
+          // })
+          // Swal.fire("Payment Successful !!!!", "Your Transection id is #123456789", "success");
+          setTimeout(function () { window.location.replace('') }, 10);
+          // window.location.reload();
 
         }
       }

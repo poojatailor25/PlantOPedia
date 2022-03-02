@@ -5,6 +5,7 @@ import { IUser } from '../login/login';
 import { LoginService } from '../login/login.service';
 import { isNotNullOrUndefine } from '../Shared/methods';
 import { SuccessEnum } from '../Shared/models';
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'app-signup',
@@ -36,7 +37,7 @@ export class SignupComponent implements OnInit {
   addNewUser() {
     if(this.newuserform.invalid)
     {
-      alert("Field is Invalid or Empty");
+      Swal.fire("Oops !!","Field is Invalid or Empty","error");
 
     }
     else {
@@ -44,7 +45,7 @@ export class SignupComponent implements OnInit {
         next: (responce) => {
           this.responce = responce;
           if (this.responce.message === SuccessEnum.message) {
-            alert("You are now signup Successfully");
+            Swal.fire("Yahh !!","You are now signup Successfully","success");
             this.router.navigate(['/login']);
 
           }

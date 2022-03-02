@@ -4,6 +4,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router'
 import { SuccessEnum } from '../Shared/models';
 import { IProduct } from './product';
 import { ProductService } from './product.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-product-update',
@@ -92,12 +93,12 @@ export class ProductUpdateComponent implements OnInit {
         this.upresponce = upresponce;
         if (this.upresponce.message === SuccessEnum.message ) {
           // this.router.navigate(['']);
-          alert("Product Updated Successfully");
+          Swal.fire("Product Updated Successfully","","success");
           this.router.navigate(['/product/', this.product.productId]);
 
         }
         else {
-          alert("Some Error occured");
+          Swal.fire("Oops !!","Some Error occured","error");
           // this.router.navigate(['/']);
         }
       }

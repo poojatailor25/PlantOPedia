@@ -6,6 +6,7 @@ import { LoginService } from "../login/login.service";
 import { isNotNullOrUndefine } from "../Shared/methods";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'product-detail',
@@ -59,12 +60,11 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addToCart(this.cartObj).subscribe({
       next: cartResponse => {
         this.cartResponse = cartResponse;
-        alert("Added to your Cart");
+        Swal.fire("Added to your Cart","","success");
+        window.location.reload();
       }
     })
   }
-
-
   deleteProduct(pid: any) {
     this.ProductService.deleteProduct(pid).subscribe({
       next: deleteResponse => {
@@ -80,7 +80,7 @@ export class ProductDetailComponent implements OnInit {
       return true;
     }
     else {
-      window.alert("you are not loggedin");
+      Swal.fire("Oops !!","you are not loggedin","error");
       this.router.navigate(['./login']);
       return false;
     }

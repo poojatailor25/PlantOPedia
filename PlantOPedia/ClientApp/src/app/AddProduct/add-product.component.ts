@@ -5,6 +5,8 @@ import { ProductService } from '../products/product.service'
 import { FormBuilder } from '@angular/forms'
 import { SuccessEnum } from '../Shared/models'
 import { Observable } from 'rxjs'
+import Swal from "sweetalert2"
+
 
 @Component({
   selector: 'app-product',
@@ -47,7 +49,7 @@ export class AddProductComponent implements OnInit {
             this.productresponse = productresponse;
             if (this.productresponse.message === SuccessEnum.message) {
                 // this.router.navigate(['']);
-                alert("Product Added Successfully");
+                Swal.fire("Yaahh !!", "Product Added Successfully!!", "success");
                 this.productform.reset();
 
             }

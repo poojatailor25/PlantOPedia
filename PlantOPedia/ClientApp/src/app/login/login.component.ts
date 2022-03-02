@@ -5,6 +5,7 @@ import { isNotNullOrUndefine } from "../Shared/methods";
 import { SuccessEnum } from "../Shared/models";
 import { IUser } from "./login";
 import { LoginService } from "./login.service";
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'app-login',
@@ -55,13 +56,13 @@ export class LoginComponent implements OnInit {
 
         }
         else {
-          alert("Invalid Email or Password ");
+          Swal.fire("Oops !!","Invalid Email or Password","error");
           this.router.navigate(['/login']);
         }
         
       },
       (errorResponce) => {
-        alert("Invalid Email or Password");
+        Swal.fire("Oops !!","Invalid Email or Password","error");
       }
     )
   }
