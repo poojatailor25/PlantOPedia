@@ -84,7 +84,7 @@ export class CartService {
           //   }
           // })
           // Swal.fire("Payment Successful !!!!", "Your Transection id is #123456789", "success");
-          setTimeout(function () { window.location.replace('') }, 10);
+          setTimeout(function () { window.location.replace('') }, 1000);
           // window.location.reload();
 
         }
